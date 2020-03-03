@@ -1,0 +1,11 @@
+<img src="<%= current_user.coverimage.full %>" class="cover">
+<section class="user-section">
+  <h2><%= "Name: #{current_user.fullname}" %></h2>
+  <article class="timeline">
+    <h3>Recent posts:</h3>
+    <ul class="posts">
+      <%= render current_user.posts %>
+    </ul>
+  </article>
+</section>
+
