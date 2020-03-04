@@ -29,6 +29,6 @@ class UsersController < ApplicationController
   end
   
   def top
-    @userst = User.joins(:following).order('COUNT(followings.followed_id) DESC').group('users.id').limit(10)
+    @userst = User.joins(:followers).order('COUNT(followings.follower_id) DESC').group('users.id').limit(10)
   end
 end
