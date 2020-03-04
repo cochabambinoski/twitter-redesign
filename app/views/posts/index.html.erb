@@ -1,3 +1,8 @@
+<div class="new-initial">
+  <h3>
+    Add new Tweet
+  </h3>
+</div>
 <%= form_for(@post) do |form| %>
   <%= form.label :content %>
   <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
@@ -9,9 +14,9 @@
   <%= form.submit 'Save', class: 'btn btn-primary' %>
 <% end %>
 
-<article class="timeline">
+<article class="timeline new-initial">
   <h3>
-    Recent posts
+    Recent tweets
   </h3>
   <ul class="posts">
     <%= render @timeline_posts %>

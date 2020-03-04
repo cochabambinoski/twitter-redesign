@@ -1,7 +1,8 @@
-<section class="user-section">
+<section class="user-section new-initial">
+  <img src="<%= @user.photo.thumb %>" class="avatar">
   <h2><%= "Name: #{@user.fullname}" %></h2>
   <article class="timeline">
-    <h3>Posts:</h3>
+    <h3>Tweets:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>

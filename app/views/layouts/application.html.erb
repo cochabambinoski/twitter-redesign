@@ -11,7 +11,7 @@
     <% if current_user %>
     <div class="sidenav">
       <div class="nav-links">
-      <img src="<%= current_user.photo.thumb %>" class="avatar">
+        <img src="<%= current_user.photo.thumb %>" class="avatar">
       </div>
       <div class="nav-links-name">
         <%= current_user.fullname %>
@@ -22,7 +22,29 @@
       <div class="nav-links">
         <%= menu_link_to 'Profile', edit_user_path(current_user) %>
       </div>
+      <div class="nav-links">
+        <%= menu_link_to 'Top', users_top_path(current_user) %>
+      </div>
     </div>
+    <div class="rightnav">
+      <% @users.each do |user| %>
+        <% unless Following.exists?(current_user, user) || current_user == user %>
+          <div class="nav-links">
+            <img src="<%= user.photo.thumb %>" class="avatar">
+          </div>
+          <div class="nav-links-names">
+            <%= link_to user.fullname, user_path(user) %>
+          </div>
+          
+            <%= form_for(current_user.active_followings.build) do |f| %>
+              <%= hidden_field_tag :followed_id, user.id %>
+              <div class="right-buttons">
+              <%= f.submit "Follow", class: "btn btn-primary" %>
+              </div>
+            <% end %>    
+        <% end %>     
+      <% end %>  
+    </div>    
     <% end %>
     <nav class='nav'>
     <div class='menu'>

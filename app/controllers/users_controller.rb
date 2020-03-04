@@ -27,4 +27,8 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+  
+  def top
+    @userst = User.joins(:following).order('COUNT(followings.followed_id) DESC').group('users.id').limit(10)
+  end
 end

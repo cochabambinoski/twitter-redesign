@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  get 'users/top' => 'users#top'
+
   devise_for :users
 
-  resources :users do
+  resources :users, only: [:create, :show, :edit, :top, :destroy] do
     member do
       get :following, :followers
     end

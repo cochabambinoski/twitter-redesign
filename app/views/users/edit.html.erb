@@ -1,8 +1,24 @@
 <img src="<%= current_user.coverimage.full %>" class="cover">
 <section class="user-section">
   <h2><%= "Name: #{current_user.fullname}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
+    <div class="stats">
+    <a href="<%= following_user_path(@user) %>">
+      <strong id="following" class="stat">
+        <%= @user.following.count %>
+      </strong>
+      following
+    </a>
+    <a href="<%= followers_user_path(@user) %>">
+      <strong id="followers" class="stat">
+        <%= @user.followers.count %>
+      </strong>
+      followers
+    </a>
+  </div>
+  </br>
+  <%= link_to 'Edit your profile', edit_user_registration_path(current_user) %>
+  <article class="timeline new-initial">
+    <h3>My tweets:</h3>
     <ul class="posts">
       <%= render current_user.posts %>
     </ul>
