@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :authentication_keys => [:username]
+         :recoverable, :rememberable, :validatable, authentication_keys: [:username]
 
   validates :fullname, presence: true, length: { maximum: 20 }
   validates :username, presence: true, length: { maximum: 20 }
@@ -10,19 +10,19 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
 
   has_many :posts
-  has_many :active_followings, class_name:  "Following",
-  foreign_key: "follower_id",
-  dependent:   :destroy
-  has_many :passive_followings, class_name:  "Following",
-  foreign_key: "followed_id",
-  dependent:   :destroy
+  has_many :active_followings, class_name: 'Following',
+                               foreign_key: 'follower_id',
+                               dependent: :destroy
+  has_many :passive_followings, class_name: 'Following',
+                                foreign_key: 'followed_id',
+                                dependent: :destroy
   has_many :following, through: :active_followings, source: :followed
   has_many :followers, through: :passive_followings, source: :follower
 
   mount_uploader :photo, FileUploader
   mount_uploader :coverimage, FileUploader
 
-    # Follows a user.
+  # Follows a user.
   def follow(other_user)
     following << other_user
   end

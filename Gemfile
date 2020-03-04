@@ -22,8 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'will_paginate', '3.2.1'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'will_paginate', '3.2.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -35,17 +35,17 @@ gem 'devise'
 
 gem 'carrierwave'
 
-gem "mini_magick"
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rubocop'
   gem 'spring'
@@ -54,12 +54,12 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'rspec'
   gem 'capybara', '>= 2.15'
+  gem 'rspec'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

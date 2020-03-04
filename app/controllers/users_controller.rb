@@ -15,19 +15,19 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
-    @user  = User.find(params[:id])
+    @title = 'Following'
+    @user = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
-    @user  = User.find(params[:id])
+    @title = 'Followers'
+    @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
-  
+
   def top
     @userst = User.joins(:followers).order('COUNT(followings.follower_id) DESC').group('users.id').limit(10)
   end
