@@ -44,5 +44,4 @@ class User < ApplicationRecord
                     GROUP BY followed_id ORDER BY COUNT(followed_id) desc"
     User.where("id IN (#{tops})")
   end
-
 end
