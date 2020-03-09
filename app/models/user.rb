@@ -22,6 +22,8 @@ class User < ApplicationRecord
   mount_uploader :photo, FileUploader
   mount_uploader :coverimage, FileUploader
 
+  scope :show, ->(number) { take(number) }
+
   # Follows a user.
   def follow(other_user)
     following << other_user
@@ -36,4 +38,11 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def topc
+    tops = "SELECT followed_id FROM followings
+                    GROUP BY followed_id ORDER BY COUNT(followed_id) desc"
+    User.where("id IN (#{tops})")
+  end
+
 end
