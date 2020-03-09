@@ -3,10 +3,43 @@
 
 ## [Collaborative Project]
 
-This project requests you to build on the top of existing project.
+This project requests to build an app from an existing project list.
 
 
 ## Additional Microverse Adjustments
+
+A Twitter new design app where you can do the following things:
+ Some of the core features of the platform:
+ - Sign up, log in & log out.
+ - User profile.
+ - Following feature. 
+ - Posts. 
+
+## Development tools
+
+- Ruby 2.7.0,
+- Ruby on Rails 6,
+- Html, CSS and JS
+
+## Getting started
+
+First at all after cloned the repo, install the app:
+
+```
+$ bundle install
+```
+
+Migrate the database:
+
+```
+$ rails db:migrate
+```
+
+And run the server
+
+```
+$ rails server
+```
 
 ### General
 
